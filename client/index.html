@@ -1,0 +1,32 @@
+<!doctype>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Type To Win</title>
+        <!-- Load Vue followed by Vue Router -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/http-vue-loader/src/httpVueLoader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>        
+    </head>
+    <body>
+        <div id="app">
+           <header>
+               <h1>Type To Win</h1>
+               <nav>
+                   <router-link to="/">Page d'Accueil</router-link>
+                   <router-link to="/register">Créer un compte</router-link>
+                   <router-link to="/login">S'identifier</router-link>
+                   <router-link to="/profile">Mon profil</router-link>
+               </nav>
+           </header>
+           <main>
+               <router-view
+               @log-into-account="logIntoAccount"
+               @create-account="createAccount"
+               ></router-view>
+           </main> 
+        </div>
+        <script src="/vue-application.js"></script>
+    </body>
+</html>
