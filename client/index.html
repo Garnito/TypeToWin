@@ -22,8 +22,13 @@
            </header>
            <main>
                <router-view
+               :log-id="logId"
+               :log-pseudo="logPseudo"
+               :friend-list="friendList"
                @log-into-account="logIntoAccount"
                @create-account="createAccount"
+               @add-friend="addFriend"
+               @delog="delog"
                ></router-view>
            </main> 
         </div>

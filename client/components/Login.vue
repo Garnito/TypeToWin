@@ -22,6 +22,7 @@ module.exports = {
     methods: {
         logIntoAccount(email, password) {
             this.$emit('log-into-account', email, password)
+            location.reload(true)
         }
     }
 }

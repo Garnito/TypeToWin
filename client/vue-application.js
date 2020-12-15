@@ -18,21 +18,31 @@ var app = new Vue({
     router,
     el: '#app',
     data: {
-      log: 0
+      logId: 0,
+      logPseudo: "",
+      friendList: []
     },
     async mounted () {
-        const res_log = await axios.get('/api/profile')
-        this.log = res_log.data
+        const res_profile = await axios.get('/api/profile')
+        this.logId = res_profile.data.logId
+        this.logPseudo = res_profile.data.logPseudo
+        this.friendList = res_profile.data.friendList
     },
     methods: {
-      async createAccount(newEmail, newPassword) {
-        await axios.post('/api/register', {email: newEmail, password: newPassword})
+      async createAccount(newPseudo, newEmail, newPassword) {
+        await axios.post('/api/register', {pseudo: newPseudo, email: newEmail, password: newPassword})
       },
       async logIntoAccount(email, password) {
         const res = await axios.post('/api/login', {email: email, password: password})
-        this.log = res.data
-        console.log(this.log)
+        this.logId = res.data.logId
+        this.logPseudo = res.data.logPseudo
       },
+      async delog() {
+        await axios.put('/api/profile')
+      },
+      async addFriend(logId, friendEmail) {
+        await axios.post('/api/profile', {logId: logId, friendEmail: friendEmail})
+      }
     }
   })
   

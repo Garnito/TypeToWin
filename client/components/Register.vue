@@ -1,9 +1,10 @@
 <template>
     <div>
         <h2>Créer un compte</h2>
+        <input v-model="newPseudo" placeholder="Pseudo">
         <input v-model="newEmail" placeholder="Email">
         <input v-model="newPassword" placeholder="Mot de passe">
-        <button @click="createAccount(newEmail, newPassword)">Valider</button>
+        <button @click="createAccount(newPseudo, newEmail, newPassword)">Valider</button>
     </div> 
 </template>
 
@@ -13,6 +14,7 @@ module.exports = {
     },
     data () {
         return {
+            newPseudo: "",
             newEmail: "",
             newPassword: ""
         }
@@ -20,8 +22,8 @@ module.exports = {
     async mounted() {
     },
     methods: {
-        createAccount(newEmail, newPassword) {
-            this.$emit('create-account', newEmail, newPassword)
+        createAccount(newPseudo, newEmail, newPassword) {
+            this.$emit('create-account', newPseudo, newEmail, newPassword)
         }
     }
 }
